@@ -11,7 +11,7 @@ public class CarController : MonoBehaviour
 	[SerializeField] private float m_Deceleration = 0.98f;
 	[SerializeField] private float m_SteerAngle = 20;
 	[SerializeField] private float m_Traction = 1;
-
+	[SerializeField] private float m_DownForce = 1f;
 	private Vector3 m_Speed;
 	private Vector3 m_Steering;
 
@@ -30,6 +30,12 @@ public class CarController : MonoBehaviour
 		Deceleration();
 		LimitSpeed();
 		Traction();
+		AddDownForce();
+	}
+
+	private void AddDownForce()
+	{
+		transform.position -= Vector3.up * m_DownForce;
 	}
 
 	private void ShowDebugRay()
